@@ -8,7 +8,7 @@ module.exports = function() {
         passwordField: 'password'
     },
     function (username, password, done) {
-        var mongoUri = process.env.MONGOLAB_URI || 'mongodb://localhost:27017/libraryApp';
+        var mongoUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/libraryApp';
         mongodb.connect(mongoUri, function(err, db) {
             var collection = db.collection('users');
             collection.findOne({

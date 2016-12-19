@@ -23,7 +23,7 @@ var app = express();
 
 // Make our db accessible to our router
 app.use(function(req,res,next) {
-    req.mongoUri = process.env.MONGOLAB_URI || 'mongodb://localhost:27017/libraryApp';
+    req.mongoUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/libraryApp';
     next();
 });
 

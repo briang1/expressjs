@@ -18,6 +18,7 @@ var bookController = function (bookService, siteCtx) {
     var getById = function(req, res) {
         var id = objectId(req.params.id);
         mongodb.connect(req.mongoUri, function(err, db) {
+            console.log(req.mongoUri);
             var collection = db.collection('books');
             collection.findOne({_id: id}, function(err, results) {
                 if (results.bookId) {
