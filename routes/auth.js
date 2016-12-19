@@ -7,10 +7,7 @@ var routerFunc = function(siteCtx) {
 
     router.route('/sign_up')
         .post(function(req, res) {
-            console.log(req.body);
-
-            var url = 'mongodb://localhost:27017/libraryApp';
-            mongodb.connect(url, function(err, db) {
+            mongodb.connect(req.mongoUri, function(err, db) {
                 var collection = db.collection('users');
                 var user = {
                     username: req.body.username,
@@ -22,32 +19,19 @@ var routerFunc = function(siteCtx) {
                     });
                 });
             });
-        })
-        .get(function(req, res) {
-            // var url = 'mongodb://localhost:27017/libraryApp';
-            // mongodb.connect(url, function(err, db) {
-            //     var collection = db.collection('books');
-            //     collection.find({}).toArray(function(err, results) {
-            //         res.render('books', {
-            //             siteTitle: siteCtx.siteTitle,
-            //             nav: siteCtx.nav,
-            //             books: results
-            //         });
-            //     });
-            // });
         });
 
     router.route('/sign_in')
         .post(passport.authenticate('local', {
             failureRedirect: '/'
         }), function(req, res) {
-            res.redirect('/auth/profile');
+            return res.redirect('/auth/profile');
         });
 
     router.route('/profile')
         .all(function(req, res, next) {
             if (!req.user) {
-                res.redirect('/');
+                return res.redirect('/');
             }
             next();
         })
