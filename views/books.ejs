@@ -1,0 +1,15 @@
+<% include header.ejs %>
+
+<ul>
+    <% var booksLen = books.length; for (var i=0; i<booksLen; i++){ %>
+    <li>
+        <h3><a href="/books/<%=books[i]._id%>"><%=books[i].title%></a></h3>
+        <ul>
+            <li>Genre: <%=books[i].genre%></li>
+            <li>Author: <%=books[i].author%></li>
+        </ul>
+    </li>
+    <% } %>
+</ul>
+
+<% include footer.ejs %>

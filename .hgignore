@@ -1,0 +1,41 @@
+syntax: glob
+.htaccess
+robots.txt
+*.orig
+*.pyc
+*.db
+site_media/media
+local_settings.py
+.settings/*
+.DS_Store
+.sass-cache
+cache
+node_modules
+bower_components
+error_log
+logs
+
+# IDE files
+*.iml
+.idea
+atlassian-ide-plugin.xml
+
+# no media files!
+*.pdf
+*.zip
+*.log
+*.mp4
+*.mp3
+*.webm
+*.ogv
+*.wmv
+*.mov
+*.avi
+*.rm
+*.mpg
+*.mpeg
+*.asf
+
+# wordpress
+wp-content
+local-config.php

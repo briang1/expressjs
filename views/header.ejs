@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title><%=siteTitle%></title>
+
+</head>
+<body>
+
+<header>
+    <h1><a href="/"><%=siteTitle%></a></h1>
+    <ul>
+        <% var navLen = nav.length; %>
+        <% for (var i=0; i<navLen; i++) { %>
+            <li><a href="<%=nav[i].link%>"><%=nav[i].text%></a></li>
+        <% } %>
+    </ul>
+
+    <form action="/auth/sign_up" method="post">
+        <input type="text" name="username" placeholder="username">
+        <input type="password" name="password" placeholder="password">
+        <input type="submit" value="Sign Up">
+    </form>
+
+    <form action="/auth/sign_in" method="post">
+        <input type="text" name="username" placeholder="username">
+        <input type="password" name="password" placeholder="password">
+        <input type="submit" value="Sign In">
+    </form>
+
+</header>

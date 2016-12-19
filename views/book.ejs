@@ -1,0 +1,11 @@
+<% include header.ejs %>
+
+<h1><%=book.title%></h1>
+<ul>
+    <% if(book.book){ %><li><img src="<%=book.book.image_url%>" alt=""></li><% } %>
+    <li>Genre: <%=book.genre%></li>
+    <li>Author: <%=book.author%></li>
+    <% if(book.book){ %><li>Description: <%-book.book.description%></li><% } %>
+</ul>
+
+<% include footer.ejs %>

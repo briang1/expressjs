@@ -1,0 +1,9 @@
+<% include header.ejs %>
+
+<ul>
+  <% var booksLen = bookList.length; for (var i=0; i<booksLen; i++){ %>
+    <li><%=bookList[i]%></li>
+  <% } %>
+</ul>
+
+<% include footer.ejs %>
