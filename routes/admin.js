@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var mongodb = require('mongodb').MongoClient;
 
-var routerFunc = function(siteCtx) {
+var routerFunc = function() {
 
     var books = [
         {

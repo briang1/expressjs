@@ -1,0 +1,13 @@
+.site-header .col2 {
+  padding-top: 15px;
+}
+
+@media (min-width: 992px) {
+  .site-header .col2 {
+    text-align: right;
+  }
+}
+
+.site-header form {
+  margin-bottom: 5px;
+}

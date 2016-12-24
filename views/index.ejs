@@ -1,9 +1,7 @@
-<% include header.ejs %>
+<% include partials/header.ejs %>
 
-<ul>
-  <% var booksLen = bookList.length; for (var i=0; i<booksLen; i++){ %>
-    <li><%=bookList[i]%></li>
-  <% } %>
-</ul>
+<h3>Welcome</h3>
 
-<% include footer.ejs %>
+<p>My first ExpressJS project.</p>
+
+<% include partials/footer.ejs %>

@@ -1,10 +1,10 @@
 var express = require('express');
 var router = express.Router();
 
-var routerFunc = function(siteCtx) {
+var routerFunc = function() {
 
     var bookService = require('../services/goodreads')();
-    var bookController = require('../controllers/bookController')(bookService, siteCtx);
+    var bookController = require('../controllers/bookController')(bookService);
 
     router.route('/')
         .get(bookController.getIndex);

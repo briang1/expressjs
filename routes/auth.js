@@ -3,9 +3,12 @@ var router = express.Router();
 var mongodb = require('mongodb').MongoClient;
 var passport = require('passport');
 
-var routerFunc = function(siteCtx) {
+var routerFunc = function() {
 
     router.route('/sign_up')
+        .get(function(req, res) {
+            res.render('sign_up', {});
+        })
         .post(function(req, res) {
             mongodb.connect(req.mongoUri, function(err, db) {
                 var collection = db.collection('users');
@@ -25,6 +28,7 @@ var routerFunc = function(siteCtx) {
         .post(passport.authenticate('local', {
             failureRedirect: '/'
         }), function(req, res) {
+            req.flash('flash_message', 'Logged In');
             return res.redirect('/auth/profile');
         });
 

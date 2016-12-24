@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><%=siteTitle%></title>
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<div class="container">
+    <header class="row site-header">
+        <div class="col-md-6">
+            <% if (messages.flash_message) { %>
+            <div><%=messages.flash_message%></div>
+            <% }%>
+            <h1><a href="/"><%=siteTitle%></a></h1>
+            <ul class="nav nav-pills">
+                <% var navLen = nav.length; %>
+                <% for (var i=0; i<navLen; i++) { %>
+                    <li><a href="<%=nav[i].link%>"><%=nav[i].text%></a></li>
+                <% } %>
+            </ul>
+
+        </div>
+        <div class="col-md-6 col2">
+            <form action="/auth/sign_in" method="post" class="form-inline">
+                <div class="form-group">
+                    <input type="text" name="username" placeholder="username">
+                    <input type="password" name="password" placeholder="password">
+                </div>
+                <input type="submit" value="Sign In" class="btn btn-default btn-sm">
+            </form>
+            <p><a href="/auth/sign_up/">Create an account</a></p>
+        </div>
+    </header>
+
+    <main class="row">
+        <div class="col-md-12">
+

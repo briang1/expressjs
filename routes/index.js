@@ -1,12 +1,11 @@
 var express = require('express');
 var router = express.Router();
 
-var routerFunc = function(siteCtx) {
+var routerFunc = function(ctx) {
 
     router.get('/', function (req, res, next) {
         res.render('index', {
-            siteTitle: siteCtx.siteTitle,
-            nav: siteCtx.nav,
+            foo: ctx.foo,
             bookList: ['Book A', 'Book B', 'Book C']
         });
     });

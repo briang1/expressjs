@@ -5,21 +5,19 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var flash = require('express-flash');
 
-var siteCtx = {
-    siteTitle: 'Learning ExpressJS',
-    nav: [
-        {link: '/', text: 'Home'},
-        {link: '/books', text: 'Books'}
-    ]
-};
-
-var index = require('./routes/index')(siteCtx);
-var auth = require('./routes/auth')(siteCtx);
-var admin = require('./routes/admin')(siteCtx);
-var books = require('./routes/books')(siteCtx);
+var index = require('./routes/index')({foo: 'bar'});
+var auth = require('./routes/auth')();
+var admin = require('./routes/admin')();
+var books = require('./routes/books')();
 
 var app = express();
+app.locals.siteTitle = 'Learning ExpressJS';
+app.locals.nav = [
+    {link: '/', text: 'Home'},
+    {link: '/books', text: 'Books'}
+];
 
 // Make our db accessible to our router
 app.use(function(req,res,next) {
@@ -39,6 +37,8 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({secret: 'library'}));
+app.use(flash());
+
 require('./config/passport')(app);
 
 app.use('/', index);
