@@ -12,7 +12,16 @@
 
 <div class="container">
     <% if (messages.flash_message) { %>
-    <div class="alert alert-info site-alert" role="alert"><%=messages.flash_message%></div>
+        <div class="alert alert-info site-alert" role="alert"><%=messages.flash_message%></div>
+    <% } %>
+    <% if (messages.flash_success) { %>
+    <div class="alert alert-success site-alert" role="alert"><%=messages.flash_success%></div>
+    <% } %>
+    <% if (messages.flash_error) { %>
+    <div class="alert alert-danger site-alert" role="alert"><%=messages.flash_error%></div>
+    <% }%>
+    <% if (messages.flash_warning) { %>
+    <div class="alert alert-warning site-alert" role="alert"><%=messages.flash_warning%></div>
     <% }%>
     <header class="row site-header">
         <div class="col-md-6">

@@ -11,14 +11,24 @@ var routerFunc = function() {
         })
         .post(function(req, res) {
             mongodb.connect(req.mongoUri, function(err, db) {
-                var collection = db.collection('users');
-                var user = {
-                    username: req.body.username,
-                    password: req.body.password
-                };
-                collection.insert(user, function(err, results) {
-                    req.login(results.ops[0], function() {
-                        res.redirect('/auth/profile');
+
+                db.collection('users').findOne({
+                    username: req.body.username
+                }, function(err, results) {
+                    if (results) {
+                        req.flash('flash_warning', 'Username not available');
+                        return res.redirect('/auth/sign_up');
+                    }
+                    var collection = db.collection('users');
+                    var user = {
+                        username: req.body.username,
+                        password: req.body.password
+                    };
+                    collection.insert(user, function(err, results) {
+                        req.login(results.ops[0], function() {
+                            req.flash('flash_success', 'Account created!');
+                            res.redirect('/auth/profile');
+                        });
                     });
                 });
             });
