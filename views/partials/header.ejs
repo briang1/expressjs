@@ -11,21 +11,21 @@
 <body>
 
 <div class="container">
+    <% if (messages.flash_message) { %>
+    <div class="alert alert-info site-alert" role="alert"><%=messages.flash_message%></div>
+    <% }%>
     <header class="row site-header">
         <div class="col-md-6">
-            <% if (messages.flash_message) { %>
-            <div><%=messages.flash_message%></div>
-            <% }%>
-            <h1><a href="/"><%=siteTitle%></a></h1>
+            <p class="site-title"><a href="/"><%=siteTitle%></a></p>
             <ul class="nav nav-pills">
                 <% var navLen = nav.length; %>
                 <% for (var i=0; i<navLen; i++) { %>
                     <li><a href="<%=nav[i].link%>"><%=nav[i].text%></a></li>
                 <% } %>
             </ul>
-
         </div>
         <div class="col-md-6 col2">
+            <% if (!user){ %>
             <form action="/auth/sign_in" method="post" class="form-inline">
                 <div class="form-group">
                     <input type="text" name="username" placeholder="username">
@@ -34,6 +34,9 @@
                 <input type="submit" value="Sign In" class="btn btn-default btn-sm">
             </form>
             <p><a href="/auth/sign_up/">Create an account</a></p>
+            <% } else { %>
+                <p><a href="/auth/profile"><span class="fa fa-user"></span> Account profile</a></p>
+            <% } %>
         </div>
     </header>
 

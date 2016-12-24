@@ -14,6 +14,7 @@ var books = require('./routes/books')();
 
 var app = express();
 app.locals.siteTitle = 'Learning ExpressJS';
+app.locals.user = null;
 app.locals.nav = [
     {link: '/', text: 'Home'},
     {link: '/books', text: 'Books'}
@@ -40,6 +41,11 @@ app.use(session({secret: 'library'}));
 app.use(flash());
 
 require('./config/passport')(app);
+
+app.use(function(req, res, next) {
+    res.locals.user = req.user;
+    next();
+});
 
 app.use('/', index);
 app.use('/auth', auth);

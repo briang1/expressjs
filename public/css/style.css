@@ -11,3 +11,11 @@
 .site-header form {
   margin-bottom: 5px;
 }
+
+.site-alert {
+  margin-top: 5px;
+}
+
+.site-title {
+  font-size: 20px;
+}

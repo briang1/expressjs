@@ -29,7 +29,14 @@ var routerFunc = function() {
             failureRedirect: '/'
         }), function(req, res) {
             req.flash('flash_message', 'Logged In');
-            return res.redirect('/auth/profile');
+            return res.redirect('/');
+        });
+
+    router.route('/sign_out')
+        .get(function(req, res) {
+            req.flash('flash_message', 'Logged Out');
+            req.logout();
+            res.redirect('/');
         });
 
     router.route('/profile')
@@ -40,7 +47,8 @@ var routerFunc = function() {
             next();
         })
         .get(function(req, res) {
-            res.json(req.user);
+            //res.json(req.user);
+            res.render('profile', {});
         });
 
     return router;
