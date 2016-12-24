@@ -1,0 +1,21 @@
+{
+  "name": "expressjs",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Brian <brian@web-mech.com>"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "font-awesome": "^4.7.0"
+  }
+}
