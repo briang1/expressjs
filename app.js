@@ -7,6 +7,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var flash = require('express-flash');
 
+var env = process.env.NODE_ENV = process.env.NODE_ENV || 'dev';
+
 var index = require('./routes/index')({foo: 'bar'});
 var auth = require('./routes/auth')();
 var admin = require('./routes/admin')();
@@ -21,8 +23,12 @@ app.locals.nav = [
 ];
 
 // Make our db accessible to our router
-app.use(function(req,res,next) {
-    req.mongoUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/libraryApp';
+app.use(function(req, res, next) {
+    if (env === 'dev') {
+        req.mongoUri = 'mongodb://localhost:27017/libraryApp';
+    } else {
+        req.mongoUri = process.env.MONGODB_URI;
+    }
     next();
 });
 
