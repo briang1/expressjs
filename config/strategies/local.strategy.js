@@ -14,7 +14,7 @@ module.exports = function() {
             collection.findOne({
                 username: username
             }, function(err, results) {
-                if (results.password === password) {
+                if (results && results.password === password) {
                     done(null, results);
                 } else {
                     done(null, false, {message: 'Bad Password'});
